@@ -1,0 +1,40 @@
+#include <iostream>
+
+int main() {
+    int sayi , sayi1;
+     char islem;
+    
+    std::cout<<"Please give me two number"<<'\n'; 
+    std::cin >> sayi >> sayi1 ;
+    
+     std::cout<<"Now give me a mathematical operation (+,-,*,/)"<<'\n';
+    std::cin >>islem;
+    int sonuc;
+    switch (islem){
+        case '+':
+        sonuc = sayi + sayi1;
+        std::cout<<sayi<< "+" << sayi1 << "="<< sonuc<<'\n';
+        break;
+        
+        case '-':
+        sonuc = sayi - sayi1;
+        std::cout<<sayi<< "-" <<sayi1<<"="<<sonuc<<'\n';
+        break;
+        
+        case '*':
+        sonuc = sayi * sayi1;
+        std::cout<<sayi<<"*"<<sayi1<<"="<<sonuc<<'\n';
+        break;
+        
+        case '/':
+        if (sayi1 != 0) {
+            sonuc = sayi / sayi1;
+            std::cout<<sayi<<"/"<<sayi1<<"="<<sonuc<<'\n';
+        }else {
+            std::cout<<"Undefined";
+        }
+        default:
+        std::cout<<"Please enter a valid operation!"<<'\n';
+        break;
+        
+    }
