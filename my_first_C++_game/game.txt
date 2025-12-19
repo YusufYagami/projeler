@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>   
+#include <algorithm> 
+
+
+int main(){
+    std::string ifade;
+    std::cout << "Lütfen hesaplama ifadesini girin (Orn: 5+3): " << '\n';
+    
+    std::cin >> ifade; 
+    
+    int sayi{};
+    int sayi2{};
+    char operation{};
+    int sonuc{};
+
+
+    size_t pos = ifade.find_first_of("+-*/"); 
+    
+    if (pos == std::string::npos) {
+   
+        std::cout << "HATAi (+, -, *, /) bu işlemlerden birini giriniz." << '\n';
+        return 1;
+    }
+    
+   
+    operation = ifade[pos];
+    
+
+    try {
+    
+        std::string sayi1_str = ifade.substr(0, pos); 
+        sayi = std::stoi(sayi1_str); 
+        
+   
+        std::string sayi2_str = ifade.substr(pos + 1);
+        sayi2 = std::stoi(sayi2_str); 
+        
+    } catch (const std::exception& e) {
+        std::cout << "HATA! Sayıları dönüştürürken sorun oluştu. Giriş formatını kontrol edin." << '\n';
+        return 1;
+    }
+
+   
+    switch (operation){
+        case '+':
+            sonuc = sayi + sayi2;
+            std::cout << sayi << " + " << sayi2 << " = " << sonuc << '\n';
+            break;
+            
+        case '-':
+            sonuc = sayi - sayi2;
+            std::cout << sayi << " - " << sayi2 << " = " << sonuc << '\n';
+            break;
+            
+        case '*':
+            sonuc = sayi * sayi2;
+            std::cout << sayi << " * " << sayi2 << " = " << sonuc << '\n';
+            break;
+            
+        case '/':
+            if (sayi2 != 0){
+                sonuc = sayi / sayi2;
+                std::cout << sayi << " / " << sayi2 << " = " << sonuc << '\n';
+            } 
+            else {
+                std::cout << "TANIMSIZ" << '\n';
+            }
+            break;
+            
+        default:
+           
+            std::cout << "Lütfen geçerli bir işlem girin." << '\n';
+    }
+    return 0;
+}
